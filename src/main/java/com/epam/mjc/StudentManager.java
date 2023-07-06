@@ -5,8 +5,16 @@ public class StudentManager {
 
   private static final long[] IDs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
 
-  public Student find(long studentID) {
-    return Student.getValueOf(studentID);
+  public Student find(long studentID) throws CustomIllegalArgumentException
+  {
+    Student student;
+
+      if(Student.getValueOf(studentID) != null)
+        student = Student.getValueOf(studentID);
+      else
+        throw new CustomIllegalArgumentException(studentID);
+
+    return student;
   }
 
   public static void main(String[] args) {
